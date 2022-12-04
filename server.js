@@ -306,4 +306,17 @@ function addDepartment() {
       });
     })
   };
+
+
+  function exit() {
+    console.log("Thank you for using Employee Tracker!");
+    connection.end();
+  }
   
+  app.use((req, res) => {
+    res.status(404).end();
+  });
+  
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
