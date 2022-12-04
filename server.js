@@ -105,4 +105,77 @@ function viewDepartment() {
       run();
     });
   }
+
+
+  function viewMan() {
+    connection.query("SELECT * FROM role", function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      run();
+    });
+  }
   
+  function addEmployee() {
+    inquirer
+      .prompt([
+        {
+        name: "first_name",
+        type: "input",
+        message: "Enter the employee's first name.",
+        validate: function(answer) {
+          if (answer !== "") {
+              return true;
+          }
+          return "Employee's first name must contain at least one character.";
+          }
+        },
+        {
+        name: "last_name",
+        type: "input",
+        message: "Enter the employee's last name.",
+        validate: function(answer) {
+          if (answer !== "") {
+              return true;
+          }
+          return "Employee's first name must contain at least one character.";
+          }
+  
+        },
+        {
+        name: "role_id",
+        type: "input",
+        message: "Enter the employee's role id.",
+        validate: function(answer) {
+          if (isNaN(answer) === false) {
+              return true;
+          }
+          return false;
+          }
+        },
+        {
+        name: "manager_id",
+        type: "input",
+        message: "Enter the employee's manager id.",
+        validate: function(answer) {
+            if (isNaN(answer) === false) {
+                return true;
+            }
+            return false;
+        }
+        }
+    ])
+
+  .then(function(answer) {
+    connection.query("INSERT INTO employee SET ?",
+        {first_name: answer.first_name,
+          last_name: answer.last_name,
+          role_id: answer.role_id || 0,
+          manager_id: answer.manager_id || 0},
+        function(err) {
+          if (err) throw err;
+          console.log("You have successfully added this employee!");
+          run();
+        }
+      );
+  });
+};
