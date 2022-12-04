@@ -37,6 +37,10 @@ SO THAT I can organize and plan my business
 
 ### Links
 
+Walkthrough video: https://watch.screencastify.com/v/5lCTxfPX68ES0ripylOe
+<br>
+GitHub repo: https://github.com/RahmaBilal/employee-tracking-db
+
 ### Questions
 
 If you have any queries, feel free to contact me on:
