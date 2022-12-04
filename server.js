@@ -247,3 +247,24 @@ function addDepartment() {
         );
     });
   };
+
+
+  function removeEmployee() {
+    inquirer
+      .prompt([
+      {
+      name: "id",
+      type: "input",
+      message: "Please enter the Employee id",
+  
+      }
+      ]).then(function(answer) {
+        connection.query("DELETE FROM employee WHERE id = ?", [answer.id],
+        function(err) {
+          if (err) throw err;
+          console.log("You have successfully removed this employee!");
+          run();
+        })
+      })
+  }
+  
