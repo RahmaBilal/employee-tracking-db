@@ -19,3 +19,65 @@ const connection = mysql.createConnection(
   },
   console.log(`Connected to the tracker_db database.`)
 );
+
+
+run ();
+
+function run() {
+  inquirer
+    .prompt({
+      name: "action",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "View all employees",
+        "View all departments",
+        "View all roles",
+        "Add employee",
+        "Add department",
+        "Add roles",
+        "Update employee role",
+        "Remove employee",
+        "Exit"
+      ]
+    })
+    .then(function(answer) {
+      switch (answer.action) {
+      case "View all employees":
+        viewEmployee();
+        break;
+      
+      case "View all departments":
+        viewDepartment();
+        break;
+    
+      case "View all roles":
+        viewRole();
+        break;
+
+      case "Add employee":
+        addEmployee();
+        break;
+
+      case "Add department":
+        addDepartment();
+        break;
+
+      case "Add roles":
+        addRole();
+        break;
+
+      case "Update employee role":
+        updateRole();
+        break;
+
+      case "Remove employee":
+        removeEmployee();
+        break;
+
+      case "Exit":
+        exit();
+        break;
+      }
+    });
+}
