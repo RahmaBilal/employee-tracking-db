@@ -4,8 +4,6 @@
 
 The Employee Tracker is a command line app that allows users to track their employee information using Node, Inquirer and MySQL.
 
-
-
 ### Table of Contents
 
 - [Description](#description)
